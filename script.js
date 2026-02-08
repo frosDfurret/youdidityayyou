@@ -22,7 +22,7 @@ if (params.get("emoji") != null) {
   document.title = atob(decodeEmojiFromBase64(params.get("emoji")))[0];
   for (let i = 0; i < document.getElementsByClassName("emoji").length; i++) {
     document.getElementsByClassName("emoji")[i].innerHTML = atob(
-      decodeEmojiFromBase64(params.get("emoji")),
+      atob(decodeEmojiFromBase64(params.get("emoji"))),
     )[0];
   }
 }
