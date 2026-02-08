@@ -19,10 +19,11 @@ function decodeEmojiFromBase64(base64) {
 /* stealing complete */
 
 if (params.get("emoji") != null) {
-  document.title = decodeEmojiFromBase64(params.get("emoji"))[0];
+  document.title = atob(decodeEmojiFromBase64(params.get("emoji")))[0];
   for (let i = 0; i < document.getElementsByClassName("emoji").length; i++) {
-    document.getElementsByClassName("emoji")[i].innerHTML =
-      decodeEmojiFromBase64(params.get("emoji"))[0];
+    document.getElementsByClassName("emoji")[i].innerHTML = atob(
+      decodeEmojiFromBase64(params.get("emoji")),
+    )[0];
   }
 }
 
@@ -108,7 +109,7 @@ setTimeout(function () {
 
 function generate() {
   text = encodeURIComponent(prompt("what text you want"));
-  emoji = encodeEmojiToBase64(prompt("what emoji you want"));
+  emoji = btoa(encodeEmojiToBase64(prompt("what emoji you want")));
   document.location.href =
     location.protocol +
     "//" +
