@@ -109,6 +109,8 @@ body {
 @media only screen and (max-width: 600px) {
     #star {
         font-size: 50pt;
+        height: 90vw;
+        width: 90vw;
     }
     @keyframes grow {
         0% {
@@ -117,8 +119,8 @@ body {
             height: 0vh;
         }
         100% {
-            height: 90vh;
-            width: 90vh;
+            height: 90vw;
+            width: 90vw;
             font-size: 50pt;
         }
     }
