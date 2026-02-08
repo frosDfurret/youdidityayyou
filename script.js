@@ -5,10 +5,11 @@ yChange = [];
 params = new URLSearchParams(document.location.search);
 
 if (params.get("emoji") != null) {
-  document.title = params.get("emoji")[0];
+  document.title = atob(params.get("emoji"))[0];
   for (let i = 0; i < document.getElementsByClassName("emoji").length; i++) {
-    document.getElementsByClassName("emoji")[i].innerHTML =
-      params.get("emoji")[0];
+    document.getElementsByClassName("emoji")[i].innerHTML = atob(
+      params.get("emoji"),
+    )[0];
   }
 }
 
@@ -94,7 +95,7 @@ setTimeout(function () {
 
 function generate() {
   text = encodeURIComponent(prompt("what text you want"));
-  emoji = encodeURIComponent(prompt("what emoji you want"));
+  emoji = btoa(prompt("what emoji you want"));
   document.location.href =
     location.protocol +
     "//" +
