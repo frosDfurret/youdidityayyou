@@ -37,7 +37,7 @@ setTimeout(function () {
       y[i] += yChange[i];
       document.getElementsByClassName("emoji")[i].style.top =
         (
-          window.innerHeight / 2 -
+          document.documentElement.clientHeight / 2 -
           document.getElementsByClassName("emoji")[i].getBoundingClientRect()
             .height /
             2 +
@@ -45,7 +45,7 @@ setTimeout(function () {
         ).toString() + "px";
       document.getElementsByClassName("emoji")[i].style.left =
         (
-          window.innerWidth / 2 -
+          document.documentElement.clientWidth / 2 -
           document.getElementsByClassName("emoji")[i].getBoundingClientRect()
             .width /
             2 +
@@ -53,23 +53,23 @@ setTimeout(function () {
         ).toString() + "px";
       if (
         x[i] >
-          window.innerHeight / 2 +
+          document.documentElement.clientHeight / 2 +
             document.getElementsByClassName("emoji")[i].getBoundingClientRect()
               .height ||
         y[i] >
-          window.innerWidth / 2 +
+          document.documentElement.clientWidth / 2 +
             document.getElementsByClassName("emoji")[i].getBoundingClientRect()
               .width /
               2 ||
         x[i] <
           -(
-            window.innerHeight / 2 +
+            document.documentElement.clientHeight / 2 +
             document.getElementsByClassName("emoji")[i].getBoundingClientRect()
               .height
           ) ||
         y[i] <
           -(
-            window.innerWidth / 2 +
+            document.documentElement.clientWidth / 2 +
             document.getElementsByClassName("emoji")[i].getBoundingClientRect()
               .width /
               2

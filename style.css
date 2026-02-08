@@ -65,8 +65,8 @@ body {
     animation-timing-function: linear;
     overflow: hidden;
     margin: 0;
-    height: 100vh;
-    width: 100vw;
+    max-height: 100vh;
+    max-width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,4 +104,22 @@ body {
     font-size: 100pt;
     z-index: -5;
     visibility: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+    #star {
+        font-size: 50pt;
+    }
+    @keyframes grow {
+        0% {
+            font-size: 0pt;
+            width: 0vh;
+            height: 0vh;
+        }
+        100% {
+            height: 90vh;
+            width: 90vh;
+            font-size: 50pt;
+        }
+    }
 }
