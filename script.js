@@ -116,7 +116,7 @@ setTimeout(function () {
           yChange[i] = -yChange[i];
         }
       }
-    }, 1);
+    }, 10);
   }
 }, 500);
 
