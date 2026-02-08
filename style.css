@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
+@keyframes tilt {
+    0% {
+        rotate: -15deg;
+    }
+    50% {
+        rotate: 15deg;
+    }
+    100% {
+        rotate: -15deg;
+    }
+}
+
+@keyframes rgb {
+    0% {
+        background-color: hsl(0, 100%, 50%);
+    }
+    11% {
+        background-color: hsl(40.5, 100%, 50%);
+    }
+    22% {
+        background-color: hsl(81.1, 100%, 50%);
+    }
+    33% {
+        background-color: hsl(121.6, 100%, 50%);
+    }
+    44% {
+        background-color: hsl(162.2, 100%, 50%);
+    }
+    55% {
+        background-color: hsl(202.7, 100%, 50%);
+    }
+    66% {
+        background-color: hsl(243.3, 100%, 50%);
+    }
+    77% {
+        background-color: hsl(283.8, 100%, 50%);
+    }
+    88% {
+        background-color: hsl(324.4, 100%, 50%);
+    }
+    100% {
+        background-color: hsl(365, 100%, 50%);
+    }
+}
+
+@keyframes grow {
+    0% {
+        font-size: 0pt;
+        width: 0vh;
+        height: 0vh;
+    }
+    100% {
+        height: 90vh;
+        width: 90vh;
+        font-size: 100pt;
+    }
+}
+
+body {
+    animation-name: rgb;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    overflow: hidden;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Comic Neue", cursive;
+    font-weight: 700;
+}
+
+#star {
+    height: 90vh;
+    width: 90vh;
+    background-image: url("star.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100pt;
+    text-align: right;
+    animation:
+        tilt 4s ease-in-out infinite,
+        grow 0.5s ease;
+    text-shadow: 7px 7px 5px white;
+}
+
+#star:hover {
+    cursor: pointer;
+    animation:
+        tilt 4s ease-in-out infinite,
+        grow 0.5s ease,
+        rgb 1s linear infinite;
+}
+
+.emoji {
+    position: absolute;
+    font-size: 100pt;
+    z-index: -5;
+    visibility: hidden;
+}
