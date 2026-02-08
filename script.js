@@ -4,11 +4,39 @@ xChange = [];
 yChange = [];
 params = new URLSearchParams(document.location.search);
 
+/*
+this code stolen from chatGPT
+*/
+
+function toCodePointString(str) {
+  return Array.from(
+    str,
+    (ch) =>
+      "U+" + ch.codePointAt(0).toString(16).toUpperCase().padStart(4, "0"),
+  ).join(" ");
+}
+
+/**
+ * Convert a code point string back to a Unicode string (emoji).
+ * Accepts: "U+1F600", "1F600", space/-,/ separated sequences
+ */
+
+function fromCodePointString(input) {
+  const parts = input.match(/(?:U\+)?[0-9A-Fa-f]{1,6}/g) || [];
+  const cps = parts.map((h) => parseInt(h.replace(/^U\+/i, ""), 16));
+  return String.fromCodePoint(...cps);
+}
+
+/*
+rest of this shitty code is my own :>
+*/
+
 if (params.get("emoji") != null) {
-  document.title = params.get("emoji")[0];
+  document.title = fromCodePointString(params.get("emoji"));
   for (let i = 0; i < document.getElementsByClassName("emoji").length; i++) {
-    document.getElementsByClassName("emoji")[i].innerHTML =
-      params.get("emoji")[0];
+    document.getElementsByClassName("emoji")[i].innerHTML = fromCodePointString(
+      params.get("emoji"),
+    );
   }
 }
 
@@ -94,7 +122,7 @@ setTimeout(function () {
 
 function generate() {
   text = encodeURIComponent(prompt("what text you want"));
-  emoji = prompt("what emoji you want");
+  emoji = toCodePointString(prompt("what emoji you want")[0]);
   document.location.href =
     location.protocol +
     "//" +
