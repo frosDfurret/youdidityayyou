@@ -32,10 +32,10 @@ rest of this shitty code is my own :>
 */
 
 if (params.get("emoji") != null) {
-  document.title = fromCodePointString(params.get("emoji"));
+  document.title = decodeURIComponent(escape(atob(params.get("emoji"))));
   for (let i = 0; i < document.getElementsByClassName("emoji").length; i++) {
-    document.getElementsByClassName("emoji")[i].innerHTML = fromCodePointString(
-      params.get("emoji"),
+    document.getElementsByClassName("emoji")[i].innerHTML = decodeURIComponent(
+      escape(atob(params.get("emoji"))),
     );
   }
 }
@@ -122,7 +122,8 @@ setTimeout(function () {
 
 function generate() {
   text = encodeURIComponent(prompt("what text you want"));
-  emoji = toCodePointString(prompt("what emoji you want")[0]);
+  emojitodo = prompt("what emoji you want");
+  emoji = encodeURIComponent(btoa(unescape(encodeURIComponent(emojitodo))));
   document.location.href =
     location.protocol +
     "//" +
